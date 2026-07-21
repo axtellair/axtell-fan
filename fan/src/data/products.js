@@ -1,7 +1,7 @@
 export const products = [
-  { category: 'ceiling', model: 'AX-2600', title: 'AX-2600', img: 'https://axtell0.wordpress.com/wp-content/uploads/2026/07/5cd7ee87d5d6cf8580b528db218b12f0-1.png', specs: ['8.5 ft','0.26 kW','6000 m³/min','35 dB'] },
+  { category: 'ceiling', model: 'AX-2600', title: 'AX-2600', img: 'https://axtell0.wordpress.com/wp-content/uploads/2026/07/5cd7ee87d5d6cf8580b528db218b12f0-1.png', specs: ['9 ft','0.26 kW','6000 m³/min','35 dB'] },
   { category: 'ceiling', model: 'AX-3100', title: 'AX-3100', img: 'https://axtell0.wordpress.com/wp-content/uploads/2026/07/5cd7ee87d5d6cf8580b528db218b12f0-1.png', specs: ['10 ft','0.30 kW','6800 m³/min','35 dB'] },
-  { category: 'ceiling', model: 'AX-3500', title: 'AX-3500', img: 'https://axtell0.wordpress.com/wp-content/uploads/2026/07/5cd7ee87d5d6cf8580b528db218b12f0-1.png', specs: ['11.5 ft','0.40 kW','8800 m³/min','36 dB'] },
+  { category: 'ceiling', model: 'AX-3500', title: 'AX-3500', img: 'https://axtell0.wordpress.com/wp-content/uploads/2026/07/5cd7ee87d5d6cf8580b528db218b12f0-1.png', specs: ['12 ft','0.40 kW','8800 m³/min','36 dB'] },
   { category: 'ceiling', model: 'AX-4200', title: 'AX-4200', img: 'https://axtell0.wordpress.com/wp-content/uploads/2026/07/b2d6a8991019f3002e49cd71f4838b9f-1.png', specs: ['14 ft','0.50 kW','10800 m³/min','36 dB'] },
   { category: 'ceiling', model: 'AX-5000', title: 'AX-5000', img: 'https://axtell0.wordpress.com/wp-content/uploads/2026/07/b2d6a8991019f3002e49cd71f4838b9f-1.png', specs: ['18 ft','0.80 kW','12400 m³/min','38 dB'] },
   { category: 'ceiling', model: 'AX-5500', title: 'AX-5500', img: 'https://axtell0.wordpress.com/wp-content/uploads/2026/07/b2d6a8991019f3002e49cd71f4838b9f-1.png', specs: ['18 ft','1.00 kW','13000 m³/min','38 dB'] },
