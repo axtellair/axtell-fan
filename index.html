@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AXTELL FAN — Industrial-Grade Ceiling &amp; Mobile Fans</title>
+  <meta name="description" content="AXTELL FAN manufactures industrial ceiling fans, mobile fans, and accessories. Massive coverage, low noise, energy efficient.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ---------- Reset & base ---------- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:72px}
+    body{font-family:'Inter',sans-serif;background:#1f3a52;color:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    button{font-family:inherit;cursor:pointer;border:none;background:none}
+    ul{list-style:none}
+    :focus-visible{outline:2px solid #f5c542;outline-offset:3px;border-radius:4px}
+    :root{--bg-dark:#1f3a52;--bg-dark-2:#28486a;--bg-dark-3:#335880;--bg-light:#f5f7fa;--bg-light-2:#fff;--accent:#f5c542;--accent-dark:#e0a82e;--accent-soft:rgba(245,197,66,0.16);--text-light:#fff;--text-light-2:#d8e4f0;--text-light-3:#a4b5c7;--text-dark:#1a1a2e;--text-dark-2:#4a5563;--border-dark:rgba(255,255,255,0.14);--border-light:#e3e8ef;--shadow-lg:0 24px 60px -20px rgba(0,0,0,0.55);--shadow-md:0 12px 30px -12px rgba(0,0,0,0.35);--radius-lg:18px;--radius-md:12px;--radius-sm:8px;--header-h:72px;--maxw:1200px;--ease:cubic-bezier(0.22,1,0.36,1)}
+    .container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+    .section{padding:96px 0;position:relative}
+    .section--light{background:var(--bg-light);color:var(--text-dark)}
+    .section--dark{background:var(--bg-dark-2);color:var(--text-light)}
+    .section-head{max-width:720px;margin:0 auto 56px;text-align:center}
+    .section-head .eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+    .section-head h2{font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px}
+    .section-head p{font-size:17px;color:var(--text-dark-2)}
+    .section--dark .section-head p{color:var(--text-light-2)}
+    .text-accent{color:var(--accent)}
+
+    /* ---------- Buttons ---------- */
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:var(--radius-sm);font-size:15px;font-weight:600;transition:all .25s var(--ease);white-space:nowrap}
+    .btn--primary{background:var(--accent);color:var(--bg-dark)}
+    .btn--primary:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(232,184,48,0.5)}
+    .btn--ghost{border:1.5px solid rgba(255,255,255,0.4);color:var(--text-light)}
+    .btn--ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+    .btn--dark{background:var(--bg-dark);color:var(--text-light)}
+    .btn--dark:hover{background:#0d1820;transform:translateY(-2px)}
+
+    /* ---------- Animations ---------- */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+    .reveal.in{opacity:1;transform:none}
+    .reveal[data-delay="1"]{transition-delay:.08s}
+    .reveal[data-delay="2"]{transition-delay:.16s}
+    .reveal[data-delay="3"]{transition-delay:.24s}
+    .reveal[data-delay="4"]{transition-delay:.32s}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes highlightPulse{0%{box-shadow:inset 0 0 0 0 rgba(245,197,66,0.4)}50%{box-shadow:inset 0 0 0 4px rgba(245,197,66,0.6)}100%{box-shadow:inset 0 0 0 0 rgba(245,197,66,0)}}
+    @media(prefers-reduced-motion:reduce){.fan-blades,.spinner{animation:none}.scroll-cue .mouse::after{animation:none}.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+    /* ---------- Header ---------- */
+    .header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);display:flex;align-items:center;background:transparent;transition:background .35s var(--ease),box-shadow .35s var(--ease);border-bottom:1px solid transparent}
+    .header.scrolled{background:rgba(22,36,47,0.85);backdrop-filter:blur(14px);border-bottom-color:var(--border-dark);box-shadow:0 6px 24px -12px rgba(0,0,0,0.6)}
+    .nav{display:flex;align-items:center;justify-content:space-between;width:100%}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;letter-spacing:1px}
+    .brand .brand-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));display:grid;place-items:center;color:var(--bg-dark);font-size:18px;box-shadow:0 6px 16px -6px rgba(232,184,48,0.6)}
+    .brand span{color:var(--accent)}
+    .nav-links{display:flex;align-items:center;gap:4px}
+    .nav-links>li>a,.nav-links>li>button{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;font-size:15px;font-weight:500;color:var(--text-light-2);border-radius:var(--radius-sm);transition:color .2s var(--ease),background .2s var(--ease);background:none;border:none;cursor:pointer;font-family:inherit}
+    .nav-links>li>a:hover,.nav-links>li>button:hover{color:var(--accent);background:rgba(255,255,255,0.04)}
+    .nav-links .active{color:var(--accent)}
+    .has-dropdown{position:relative}
+    .dropdown{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(8px);background:var(--bg-dark-3);border:1px solid var(--border-dark);border-radius:var(--radius-md);min-width:220px;padding:8px;box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;transition:opacity .22s var(--ease),transform .22s var(--ease)}
+    .has-dropdown.open .dropdown,.has-dropdown:hover .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+    .dropdown a{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:var(--radius-sm);font-size:14.5px;color:var(--text-light-2);transition:background .18s var(--ease),color .18s var(--ease)}
+    .dropdown a i{width:18px;color:var(--accent)}
+    .dropdown a:hover{background:rgba(232,184,48,0.1);color:var(--text-light)}
+    .nav-cta{display:flex;align-items:center;gap:12px}
+    .nav-toggle{display:none;width:44px;height:44px;border-radius:10px;color:var(--text-light);font-size:22px;background:none;border:none;cursor:pointer}
+    @media(max-width:768px){.nav-links,.nav-cta .btn{display:none}.nav-toggle{display:grid;place-items:center}.nav-links.mobile-open{display:flex;flex-direction:column;align-items:stretch;gap:0;position:fixed;top:var(--header-h);left:0;right:0;bottom:0;background:var(--bg-dark-2);padding:20px 24px;overflow-y:auto;border-top:1px solid var(--border-dark)}.nav-links.mobile-open>li{width:100%}.nav-links.mobile-open>li>a,.nav-links.mobile-open>li>button{width:100%;justify-content:space-between;padding:16px 12px;border-bottom:1px solid var(--border-dark)}.nav-links.mobile-open .dropdown{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;background:transparent;border:none;padding:0 0 0 16px;min-width:0;max-height:0;overflow:hidden;transition:max-height .3s var(--ease)}.nav-links.mobile-open .has-dropdown.open .dropdown{max-height:80vh;padding:4px 0 8px 16px}.nav-links.mobile-open .dropdown a{border-bottom:1px solid var(--border-dark)}}
+
+    /* ---------- Hero ---------- */
+    .hero{position:relative;min-height:100vh;display:flex;align-items:center;background:radial-gradient(ellipse at 70% 30%,#243a4d 0%,var(--bg-dark) 55%,#0f1a23 100%);overflow:hidden;padding-top:var(--header-h)}
+    .hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,0.04) 1px,transparent 0);background-size:28px 28px;opacity:0.6;pointer-events:none}
+    .hero-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;position:relative;z-index:2}
+    .hero-copy .badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;background:var(--accent-soft);border:1px solid rgba(232,184,48,0.3);border-radius:999px;font-size:13px;font-weight:600;color:var(--accent);margin-bottom:24px}
+    .hero h1{font-size:clamp(34px,5.4vw,60px);font-weight:900;line-height:1.08;letter-spacing:-1px;margin-bottom:22px}
+    .hero h1 .accent{color:var(--accent)}
+    .hero p.lead{font-size:clamp(16px,1.8vw,19px);color:var(--text-light-2);max-width:540px;margin-bottom:36px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:48px}
+    .hero-stats{display:flex;gap:36px;flex-wrap:wrap;padding-top:28px;border-top:1px solid var(--border-dark)}
+    .hero-stats .stat .num{font-size:30px;font-weight:800;color:var(--accent);line-height:1}
+    .hero-stats .stat .label{font-size:13px;color:var(--text-light-3);margin-top:6px;text-transform:uppercase;letter-spacing:1px}
+    .fan-stage{display:grid;place-items:center;position:relative}
+    .fan-glow{position:absolute;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(220,225,232,0.14),transparent 65%);filter:blur(8px)}
+    .fan{position:relative;width:min(420px,80vw);aspect-ratio:1}
+    .fan-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:11%;height:11%;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f7d95a,#e0a82e 55%,#c4911a);border:2px solid #f5c542;z-index:5;box-shadow:0 0 0 4px rgba(245,197,66,0.2),inset 0 0 12px rgba(0,0,0,0.2)}
+    .fan-blades{position:absolute;inset:0;animation:spin 4s linear infinite;transform-origin:center}
+    .blade{position:absolute;top:50%;left:50%;width:47%;height:6%;transform-origin:0% 50%}
+    .blade::after{content:"";position:absolute;inset:0;border-radius:2px 50% 50% 2px;background:linear-gradient(180deg,#eef1f4,#c5cdd6 55%,#9aa3ad);border:1px solid rgba(180,190,200,0.5);box-shadow:0 3px 10px rgba(0,0,0,0.35)}
+    .blade:nth-child(1){transform:rotate(0deg)}
+    .blade:nth-child(2){transform:rotate(72deg)}
+    .blade:nth-child(3){transform:rotate(144deg)}
+    .blade:nth-child(4){transform:rotate(216deg)}
+    .blade:nth-child(5){transform:rotate(288deg)}
+    .fan-ring{position:absolute;inset:0;border:2px dashed rgba(200,210,220,0.22);border-radius:50%}
+    .scroll-cue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:var(--text-light-3);font-size:13px;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:3}
+    .scroll-cue .mouse{width:24px;height:38px;border:2px solid var(--text-light-3);border-radius:14px;position:relative}
+    .scroll-cue .mouse::after{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:4px;height:8px;background:var(--accent);border-radius:2px;animation:wheel 1.6s infinite}
+    @keyframes wheel{0%{opacity:1;top:7px}100%{opacity:0;top:20px}}
+    @media(max-width:768px){.hero{min-height:auto;padding:calc(var(--header-h) + 40px) 0 80px}.hero-inner{grid-template-columns:1fr;gap:40px;text-align:center}.hero-copy .badge,.hero-actions{justify-content:center}.hero p.lead{margin-left:auto;margin-right:auto}.hero-stats{justify-content:center;gap:28px}.fan{width:min(320px,70vw)}}@media(max-width:560px){.hero-stats{gap:20px}.hero-stats .stat .num{font-size:24px}}
+
+    /* ---------- Features ---------- */
+    .features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .feature-card{background:var(--bg-light-2);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:32px 26px;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+    .feature-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:var(--accent)}
+    .feature-card .ico{width:56px;height:56px;border-radius:14px;background:var(--accent-soft);color:var(--accent-dark);display:grid;place-items:center;font-size:24px;margin-bottom:20px}
+    .feature-card h3{font-size:19px;font-weight:700;margin-bottom:10px;color:var(--text-dark)}
+    .feature-card p{font-size:14.5px;color:var(--text-dark-2)}
+    @media(max-width:1024px){.features-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.features-grid{grid-template-columns:1fr}}
+
+    /* ---------- Products ---------- */
+    .tabs{display:flex;justify-content:center;gap:10px;margin-bottom:40px;flex-wrap:wrap}
+    .tab{padding:12px 24px;border-radius:999px;font-size:14.5px;font-weight:600;border:1.5px solid var(--border-dark);color:var(--text-light-2);transition:all .22s var(--ease);display:inline-flex;align-items:center;gap:8px;background:none;cursor:pointer;font-family:inherit}
+    .tab:hover{color:var(--accent);border-color:var(--accent)}
+    .tab.active{background:var(--accent);color:var(--bg-dark);border-color:var(--accent)}
+    .tab .count{font-size:12px;opacity:0.7}
+    .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+    .product-card{background:var(--bg-dark-3);border:1px solid var(--border-dark);border-radius:var(--radius-lg);padding:26px 22px;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease);display:flex;flex-direction:column}
+    .product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--accent)}
+    .product-card .p-ico{width:100%;aspect-ratio:16/10;border-radius:var(--radius-md);margin-bottom:18px;background:linear-gradient(135deg,#243447,#1a2a3a);display:grid;place-items:center;color:var(--accent);font-size:44px;border:1px solid var(--border-dark);overflow:hidden;position:relative}
+    /* 移动风扇 & 配件 统一尺寸（加宽） */
+    .product-card[data-category="mobile"] .p-ico,
+    .accessory-card .p-ico {
+      aspect-ratio: 21 / 21;
+      font-size: 38px;
+    }
+    .product-card .p-ico img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s var(--ease)}
+    .product-card:hover .p-ico img{transform:scale(1.02)}
+    .product-card .p-ico i{font-size:44px}
+    .product-card .p-cat{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+    .product-card h3{font-size:20px;font-weight:700;margin-bottom:10px}
+    .product-card .p-specs{font-size:13.5px;color:var(--text-light-3);margin-bottom:16px;flex-grow:1}
+    .product-card .p-specs li{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--border-dark)}
+    .product-card .p-specs li:last-child{border-bottom:none}
+    .product-card .p-specs li span:last-child{color:var(--text-light-2);font-weight:500}
+    .product-card .p-link{font-size:14px;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:6px;transition:gap .2s var(--ease)}
+    .product-card .p-link:hover{gap:10px}
+    .accessory-card .p-desc{font-size:13.5px;color:var(--text-light-3);margin-bottom:16px;flex-grow:1}
+    @media(max-width:1024px){.product-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:768px){.product-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.product-grid{grid-template-columns:1fr}}
+
+    /* ---------- Specifications ---------- */
+    .spec-wrap{overflow-x:auto;border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border-light);background:var(--bg-light-2);margin-bottom:32px}
+    .spec-wrap:last-child{margin-bottom:0}
+    .spec-table{width:100%;border-collapse:collapse;min-width:700px}
+    .spec-table thead th{position:sticky;top:0;background:var(--bg-dark);color:var(--text-light);font-size:13px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:14px 16px;text-align:left;border-bottom:2px solid var(--accent);cursor:pointer;user-select:none;white-space:nowrap;transition:background .2s var(--ease)}
+    .spec-table thead th:hover{background:#0f1a23}
+    .spec-table thead th .sort-ico{margin-left:6px;opacity:0.4;font-size:11px}
+    .spec-table thead th.sorted-asc .sort-ico,.spec-table thead th.sorted-desc .sort-ico{opacity:1;color:var(--accent)}
+    .spec-table tbody td{padding:14px 16px;font-size:14px;color:var(--text-dark);border-bottom:1px solid var(--border-light);white-space:nowrap}
+    .spec-table tbody tr{transition:background .3s var(--ease),box-shadow .3s var(--ease)}
+    .spec-table tbody tr:nth-child(even){background:#fafbfc}
+    .spec-table tbody tr:hover{background:var(--accent-soft)}
+    .spec-table tbody tr.highlight-row{background:var(--accent-soft)!important;border-left:3px solid var(--accent);box-shadow:inset 0 0 0 1px var(--accent);animation:highlightPulse 1.2s ease 2}
+    .spec-table tfoot td{padding:12px 16px;font-size:12.5px;color:var(--text-dark-2);font-style:italic;border-top:2px solid var(--border-light);background:#fafbfc;transition:background .3s var(--ease),color .3s var(--ease)}
+    .spec-table tfoot td.notice-highlight{background:#fff3cd;color:#856404;font-weight:600}
+    .sub-title{font-size:22px;font-weight:700;margin:40px 0 20px;color:var(--text-dark)}
+    .sub-title:first-of-type{margin-top:0}
+
+    /* ---------- Applications ---------- */
+    .app-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .app-card{background:var(--bg-dark-3);border:1px solid var(--border-dark);border-radius:var(--radius-lg);transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease);position:relative;overflow:hidden;display:flex;flex-direction:column}
+    .app-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease);z-index:2}
+    .app-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:rgba(232,184,48,0.4)}
+    .app-card:hover::before{transform:scaleX(1)}
+    .app-card .app-img{width:100%;aspect-ratio:16/10;overflow:hidden;background:linear-gradient(135deg,#1a2a3a,#0f1a23);display:grid;place-items:center;color:var(--accent);font-size:38px;border-bottom:1px solid var(--border-dark);flex-shrink:0}
+    .app-card .app-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s var(--ease)}
+    .app-card:hover .app-img img{transform:scale(1.04)}
+    .app-card .app-img i{font-size:44px;opacity:0.5}
+    .app-card .app-body{padding:26px 24px 30px;flex-grow:1;display:flex;flex-direction:column}
+    .app-card h3{font-size:20px;font-weight:700;margin-bottom:10px}
+    .app-card p{font-size:14.5px;color:var(--text-light-2);line-height:1.6}
+    @media(max-width:1024px){.app-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:768px){.app-grid{grid-template-columns:1fr}}
+
+    /* ---------- Contact ---------- */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+    .contact-info h3{font-size:26px;font-weight:800;margin-bottom:16px;color:var(--text-dark)}
+    .contact-info p{color:var(--text-dark-2);margin-bottom:28px;max-width:420px}
+    .contact-list{display:flex;flex-direction:column;gap:18px;margin-bottom:32px}
+    .contact-list li{display:flex;align-items:flex-start;gap:16px}
+    .contact-list .ico{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-size:17px;flex-shrink:0}
+    .contact-list .meta .l{font-size:13px;color:var(--text-light-3);text-transform:uppercase;letter-spacing:1px}
+    .contact-list .meta .v,.contact-list .meta a{font-size:15.5px;font-weight:600;color:var(--text-dark);transition:color .2s var(--ease)}
+    .contact-list .meta a:hover{color:var(--accent-dark)}
+    .social-row{display:flex;gap:12px}
+    .social-row a{width:44px;height:44px;border-radius:12px;background:var(--bg-light-2);border:1px solid var(--border-light);display:grid;place-items:center;color:var(--text-dark-2);font-size:18px;transition:all .22s var(--ease)}
+    .social-row a:hover{background:var(--accent);color:var(--bg-dark);border-color:var(--accent);transform:translateY(-3px)}
+    .contact-form{background:var(--bg-light-2);border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow-md);color:var(--text-dark)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+    .field{display:flex;flex-direction:column;gap:7px}
+    .field.full{grid-column:1/-1}
+    .field label{font-size:13px;font-weight:600;color:var(--text-dark)}
+    .field label .req{color:#e74c3c}
+    .field input,.field textarea{padding:13px 15px;border:1.5px solid var(--border-light);border-radius:var(--radius-sm);font-family:inherit;font-size:14.5px;color:var(--text-dark);background:#fbfcfd;transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
+    .field textarea{resize:vertical;min-height:120px}
+    .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+    .field .err-msg{font-size:12.5px;color:#e74c3c;display:none}
+    .field.invalid input,.field.invalid textarea{border-color:#e74c3c}
+    .field.invalid .err-msg{display:block}
+    .form-submit{margin-top:8px;width:100%;justify-content:center}
+    .form-success{display:none;align-items:center;gap:12px;padding:16px 18px;margin-bottom:18px;background:rgba(46,204,113,0.12);border:1px solid rgba(46,204,113,0.4);border-radius:var(--radius-sm);color:#1e8e4e;font-size:14.5px;font-weight:500}
+    .form-success.show{display:flex}
+    .spinner{width:18px;height:18px;border:2px solid rgba(26,42,58,0.2);border-top-color:var(--bg-dark);border-radius:50%;animation:spin .7s linear infinite}
+    @media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:36px}}@media(max-width:560px){.contact-form{padding:26px 22px}.form-row{grid-template-columns:1fr}}
+
+    /* ---------- Footer ---------- */
+    .footer{background:#0f1a23;padding:28px 0;border-top:1px solid var(--border-dark)}
+    .footer .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .footer .footer-bottom p{font-size:13px;color:var(--text-light-3);margin:0}
+    .footer .footer-bottom .made{font-size:13px;color:var(--text-light-3)}
+    .footer .footer-bottom .made span{color:var(--accent)}
+    @media(max-width:768px){.section{padding:72px 0}}@media(max-width:560px){.container{padding:0 18px}}
+  </style>
+
+
+
+
+
+
+
+
+
+
+</head>
+<body contenteditable="false">
+  <div id="app">
+    <!-- Header -->
+    <header class="header scrolled" id="header">
+      <div class="container">
+        <nav class="nav" aria-label="Primary">
+          <a href="#home" class="brand" aria-label="AXTELL FAN home">
+            <span class="brand-mark" aria-hidden="true"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/787878.png"></span>
+            AXTELL<span>FAN</span>
+          </a>
+          <ul class="nav-links" id="navLinks">
+            <li><a href="#home" data-target="home" class="">Home</a></li>
+            <li class="has-dropdown" id="productsNav">
+              <button type="button" aria-haspopup="true" aria-expanded="false" data-target="products" class="active">Products <i class="fa-solid fa-chevron-down" style="font-size:11px;"></i></button>
+              <div class="dropdown" role="menu">
+                <a href="#products" data-filter="ceiling" role="menuitem"><i class="fa-solid fa-fan"></i> Ceiling Fan</a>
+                <a href="#products" data-filter="mobile" role="menuitem"><i class="fa-solid fa-truck-medical"></i> Mobile Fan</a>
+                <a href="#products" data-filter="accessory" role="menuitem"><i class="fa-solid fa-screwdriver-wrench"></i> Accessories</a>
+              </div>
+            </li>
+            <li><a href="#specs" data-target="specs" class="">Specifications</a></li>
+            <li><a href="#application" data-target="application" class="">Application</a></li>
+            <li><a href="#contact" data-target="contact" class="">Contact Us</a></li>
+          </ul>
+          <div class="nav-cta">
+            <a href="#contact" class="btn btn--primary">Get a Quote <i class="fa-solid fa-arrow-right"></i></a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <span class="badge"><i class="fa-solid fa-bolt"></i> Industrial-Grade Performance</span>
+            <h1>Massive Coverage.<br><span class="accent">Ultra-Low Noise.</span><br>Energy Efficient.</h1>
+            <p class="lead">AXTELL industrial fans deliver powerful airflow across the largest facilities — built rugged, engineered quiet, and designed to cut your energy bill.</p>
+            <div class="hero-actions">
+              <a href="#products" class="btn btn--primary">View Products <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="#contact" class="btn btn--ghost">Contact Us</a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat"><div class="num">24FT</div><div class="label">Max Diameter</div></div>
+              <div class="stat"><div class="num">1.5kW</div><div class="label">Max Power</div></div>
+              <div class="stat"><div class="num">2,7000ft²</div><div class="label">Coverage</div></div>
+              <div class="stat"><div class="num">40dB</div><div class="label">Min Noise</div></div>
+            </div>
+          </div>
+          <div class="fan-stage">
+            <div class="fan-glow" aria-hidden="true"></div>
+            <div class="fan" aria-hidden="true">
+              <div class="fan-ring"></div>
+              <div class="fan-blades"><div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div></div>
+              <div class="fan-hub"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><div class="mouse"></div><span>Scroll</span></div>
+    </section>
+
+    <!-- Features -->
+    <section class="section section--light" id="features">
+      <div class="container">
+        <div class="section-head reveal in"><span class="eyebrow">Why AXTELL</span><h2>Engineered for Demanding Environments</h2><p>Every AXTELL fan is built around four core promises — so your facility stays cool, comfortable, and productive.</p></div>
+        <div class="features-grid">
+          <div class="feature-card reveal in" data-delay="1"><div class="ico"><i class="fa-solid fa-wind"></i></div><h3>Massive Coverage</h3><p>Up to 2,500 m² of even airflow from a single unit — eliminating dead zones across wide-span spaces.</p></div>
+          <div class="feature-card reveal in" data-delay="2"><div class="ico"><i class="fa-solid fa-bolt-lightning"></i></div><h3>High Efficiency</h3><p>Aerodynamic blades and brushless motors deliver big airflow on remarkably low power draw.</p></div>
+          <div class="feature-card reveal in" data-delay="3"><div class="ico"><i class="fa-solid fa-volume-low"></i></div><h3>Ultra-Low Noise</h3><p>Precision-balanced blades keep operating noise as low as 38 dB — quiet enough for offices.</p></div>
+          <div class="feature-card reveal in" data-delay="4"><div class="ico"><i class="fa-solid fa-shield-halved"></i></div><h3>Safe &amp; Reliable</h3><p>Integrated safety cables, sealed motors, and a 2-year warranty back every installation.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="section section--dark" id="products">
+      <div class="container">
+        <div class="section-head reveal in"><span class="eyebrow">Our Products</span><h2>Find the Right Fan for Your Facility</h2><p>Browse our full range of industrial ceiling fans, mobile fans, and accessories.</p></div>
+        <div class="tabs reveal in" role="tablist">
+          <button class="tab" data-filter="ceiling" role="tab" aria-selected="false"><i class="fa-solid fa-fan"></i> Ceiling Fan <span class="count">8</span></button>
+          <button class="tab" data-filter="mobile" role="tab" aria-selected="false"><i class="fa-solid fa-truck-medical"></i> Mobile Fan <span class="count">5</span></button>
+          <button class="tab active" data-filter="accessory" role="tab" aria-selected="true"><i class="fa-solid fa-screwdriver-wrench"></i> Accessories <span class="count">3</span></button>
+        </div>
+        <div class="product-grid" id="productGrid">
+          <!-- Ceiling Fans (default visible) -->
+          <article class="product-card reveal in" data-category="ceiling" style="display: none;"><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/5cd7ee87d5d6cf8580b528db218b12f0-1.png" alt="AX-2600" loading="lazy"></div><div class="p-cat">Ceiling Fan</div><h3>AX-2600</h3><ul class="p-specs"><li><span>Diameter</span><span>9.0 ft</span></li><li><span>Input Power</span><span>110 V/60HZ</span></li><li><span>Airflow</span><span>212000 CFM</span></li><li><span>Noise</span><span>35 dB</span></li></ul><a class="p-link" href="#specs" data-model="AX-2600">View specs <i class="fa-solid fa-arrow-right-long"></i></a></article>
+          <article class="product-card reveal in" data-category="ceiling" style="display: none;"><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/5cd7ee87d5d6cf8580b528db218b12f0-1.png" alt="AX-3100" loading="lazy"></div><div class="p-cat">Ceiling Fan</div><h3>AX-3100</h3><ul class="p-specs"><li><span>Diameter</span><span>10 ft</span></li><li><span>Input Power</span><span>110 V/60HZ</span></li><li><span>Airflow</span><span>240000 CFM</span></li><li><span>Noise</span><span>35 dB</span></li></ul><a class="p-link" href="#specs" data-model="AX-3100">View specs <i class="fa-solid fa-arrow-right-long"></i></a></article>
+          <article class="product-card reveal in" data-category="ceiling" style="display: none;"><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/5cd7ee87d5d6cf8580b528db218b12f0-1.png" alt="AX-3500" loading="lazy"></div><div class="p-cat">Ceiling Fan</div><h3>AX-3500</h3><ul class="p-specs"><li><span>Diameter</span><span>12 ft</span></li><li><span>Power</span><span>110 V/60HZ</span></li><li><span>Airflow</span><span>310000 CFM</span></li><li><span>Noise</span><span>36 dB</span></li></ul><a class="p-link" href="#specs" data-model="AX-3500">View specs <i class="fa-solid fa-arrow-right-long"></i></a></article>
+          <article class="product-card reveal in" data-category="ceiling" style="display: none;"><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/b2d6a8991019f3002e49cd71f4838b9f-1.png" alt="AX-4200" loading="lazy"></div><div class="p-cat">Ceiling Fan</div><h3>AX-4200</h3><ul class="p-specs"><li><span>Diameter</span><span>14 ft</span></li><li><span>Input Power</span><span>110 V/60HZ</span></li><li><span>Airflow</span><span>3815000 CFM</span></li><li><span>Noise</span><span>36 dB</span></li></ul><a class="p-link" href="#specs" data-model="AX-4200">View specs <i class="fa-solid fa-arrow-right-long"></i></a></article>
+          <article class="product-card reveal in" data-category="ceiling" style="display: none;"><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/b2d6a8991019f3002e49cd71f4838b9f-1.png" alt="AX-5000" loading="lazy"></div><div class="p-cat">Ceiling Fan</div><h3>AX-5000</h3><ul class="p-specs"><li><span>Diameter</span><span>18 ft</span></li><li><span>Input Power</span><span>110 V/60HZ</span></li><li><span>Airflow</span><span>438000 CFM</span></li><li><span>Noise</span><span>38 dB</span></li></ul><a class="p-link" href="#specs" data-model="AX-5000">View specs <i class="fa-solid fa-arrow-right-long"></i></a></article>
+          <article class="product-card reveal in" data-category="ceiling" style="display: none;"><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/b2d6a8991019f3002e49cd71f4838b9f-1.png" alt="AX-5500" loading="lazy"></div><div class="p-cat">Ceiling Fan</div><h3>AX-5500</h3><ul class="p-specs"><li><span>Diameter</span><span>18 ft</span></li><li><span>Input Power</span><span>110 V/60HZ</span></li><li><span>Airflow</span><span>460000 CFM</span></li><li><span>Noise</span><span>38 dB</span></li></ul><a class="p-link" href="#specs" data-model="AX-5500">View specs <i class="fa-solid fa-arrow-right-long"></i></a></article>
+          <article class="product-card reveal in" data-category="ceiling" style="display: none;"><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/b2d6a8991019f3002e49cd71f4838b9f-1.png" alt="AX-6100" loading="lazy"></div><div class="p-cat">Ceiling Fan</div><h3>AX-6100</h3><ul class="p-specs"><li><span>Diameter</span><span>20 ft</span></li><li><span>Input Power</span><span>110 V/60HZ</span></li><li><span>Airflow</span><span>501500 CFM</span></li><li><span>Noise</span><span>38 dB</span></li></ul><a class="p-link" href="#specs" data-model="AX-6100">View specs <i class="fa-solid fa-arrow-right-long"></i></a></article>
+          <article class="product-card reveal in" data-category="ceiling" style="display: none;"><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/b2d6a8991019f3002e49cd71f4838b9f-1.png" alt="AX-7300" loading="lazy"></div><div class="p-cat">Ceiling Fan</div><h3>AX-7300</h3><ul class="p-specs"><li><span>Diameter</span><span>24 ft</span></li><li><span>Input Power</span><span>240 V/60HZ</span></li><li><span>Airflow</span><span>570000 CFM</span></li><li><span>Noise</span><span>40 dB</span></li></ul><a class="p-link" href="#specs" data-model="AX-7300">View specs <i class="fa-solid fa-arrow-right-long"></i></a></article>
+
+          <!-- Mobile Fans (hidden by default) -->
+          <article class="product-card reveal in" data-category="mobile" style="display: none;"><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/ab47ac6b5041f37f0c5c3dd35b36e0fb.jpg" alt="AXG-100" loading="lazy"></div><div class="p-cat">Mobile Fan</div><h3>AXG-100</h3><ul class="p-specs"><li><span>Diameter</span><span>0.6 ft</span></li><li><span>Power</span><span>0.45 kW</span></li><li><span>Airflow</span><span>25000 m³/min</span></li><li><span>Noise</span><span>42 dB</span></li></ul><a class="p-link" href="#specs" data-model="AXG-100">View specs <i class="fa-solid fa-arrow-right-long"></i></a></article>
+          <article class="product-card reveal in" data-category="mobile" style="display: none;"><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/cafcf9dc1269eeeec1b629a56761c028.jpg" alt="AXS-100" loading="lazy"></div><div class="p-cat">Mobile Fan</div><h3>AXS-100</h3><ul class="p-specs"><li><span>Diameter</span><span>0.5 ft</span></li><li><span>Power</span><span>0.45 kW</span></li><li><span>Airflow</span><span>25000 m³/min</span></li><li><span>Noise</span><span>43 dB</span></li></ul><a class="p-link" href="#specs" data-model="AXS-100">View specs <i class="fa-solid fa-arrow-right-long"></i></a></article>
+          <article class="product-card reveal in" data-category="mobile" style="display: none;"><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/584d3f85d863dc05683825872d5a10ec-2.jpg" alt="AXS-130" loading="lazy"></div><div class="p-cat">Mobile Fan</div><h3>AXS-130</h3><ul class="p-specs"><li><span>Diameter</span><span>0.8 ft</span></li><li><span>Power</span><span>0.45 kW</span></li><li><span>Airflow</span><span>35000 m³/min</span></li><li><span>Noise</span><span>43 dB</span></li></ul><a class="p-link" href="#specs" data-model="AXS-130">View specs <i class="fa-solid fa-arrow-right-long"></i></a></article>
+          <article class="product-card reveal in" data-category="mobile" style="display: none;"><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/136c98f9c72167b9f329fba8c2b8083e.jpg" alt="AXS-150" loading="lazy"></div><div class="p-cat">Mobile Fan</div><h3>AXS-150</h3><ul class="p-specs"><li><span>Diameter</span><span>0.9 ft</span></li><li><span>Power</span><span>0.60 kW</span></li><li><span>Airflow</span><span>42000 m³/min</span></li><li><span>Noise</span><span>44 dB</span></li></ul><a class="p-link" href="#specs" data-model="AXS-150">View specs <i class="fa-solid fa-arrow-right-long"></i></a></article>
+          <article class="product-card reveal" data-category="mobile" style="display: none;"><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/136c98f9c72167b9f329fba8c2b8083e.jpg" alt="AXS-200" loading="lazy"></div><div class="p-cat">Mobile Fan</div><h3>AXS-200</h3><ul class="p-specs"><li><span>Diameter</span><span>1.1 ft</span></li><li><span>Power</span><span>1.10 kW</span></li><li><span>Airflow</span><span>56000 m³/min</span></li><li><span>Noise</span><span>45 dB</span></li></ul><a class="p-link" href="#specs" data-model="AXS-200">View specs <i class="fa-solid fa-arrow-right-long"></i></a></article>
+
+          <!-- Accessories (hidden by default) -->
+          <article class="product-card accessory-card reveal in" data-category="accessory" style=""><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/e69a94038883ae5ee3e3ad4fcfd6eada.png" alt="Remote Controller" loading="lazy"></div><div class="p-cat">Accessory</div><h3>Remote Controller</h3><p class="p-desc">Wireless RF remote with 6-speed control and timer scheduling.</p><a class="p-link" href="#contact" data-model="Remote Controller">Enquire <i class="fa-solid fa-arrow-right-long"></i></a></article>
+          <article class="product-card accessory-card reveal in" data-category="accessory" style=""><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/bbad76019020659ed920cbc2f19503c21.png" alt="Speed Controller" loading="lazy"></div><div class="p-cat">Accessory</div><h3>Speed Controller</h3><p class="p-desc">Variable-frequency drive for smooth, stepless airflow tuning.</p><a class="p-link" href="#contact" data-model="Speed Controller">Enquire <i class="fa-solid fa-arrow-right-long"></i></a></article>
+          <article class="product-card accessory-card reveal in" data-category="accessory" style=""><div class="p-ico"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/b161616531cae45972174c69aa8ca78e.png" alt="Motor" loading="lazy"></div><div class="p-cat">Accessory</div><h3>Motor&nbsp;</h3><p class="p-desc">An&nbsp; induction motor that drives the fan blades to circulate air.</p><a class="p-link" href="#contact" data-model="Motor Cover">Enquire <i class="fa-solid fa-arrow-right-long"></i></a></article>
+         
+        </div>
+      </div>
+    </section>
+
+    <!-- Specifications -->
+    <section class="section section--light" id="specs">
+      <div class="container">
+        <div class="section-head reveal in"><span class="eyebrow">Technical Data</span><h2>Full Specifications</h2><p>Ceiling and Mobile fans are listed separately. Click any column header to sort.</p></div>
+
+        <!-- Ceiling Table -->
+        <div class="spec-wrap reveal in">
+          <h3 class="sub-title">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Ceiling Fans</h3>
+          <table class="spec-table" id="specCeiling">
+            <thead><tr><th data-key="model" data-type="string" class="sorted-asc">Model <span class="sort-ico"><i class="fa-solid fa-sort-up"></i></span></th><th data-key="diameter" data-type="number" class="">Diameter (ft) <span class="sort-ico"><i class="fa-solid fa-sort"></i></span></th><th data-key="power" data-type="number">Power (kW) <span class="sort-ico"><i class="fa-solid fa-sort"></i></span></th><th data-key="speed" data-type="number">Speed (RPM) <span class="sort-ico"><i class="fa-solid fa-sort"></i></span></th><th data-key="airflow" data-type="number" class="">Airflow (CFM) <span class="sort-ico"><i class="fa-solid fa-sort"></i></span></th><th data-key="noise" data-type="number">Noise (dB) <span class="sort-ico"><i class="fa-solid fa-sort"></i></span></th><th data-key="weight" data-type="number" class="">Weight (LB) <span class="sort-ico"><i class="fa-solid fa-sort"></i></span></th></tr></thead>
+            <tbody id="specCeiling-body"><tr data-model="AX-2600"><td><strong>AX-2600</strong></td><td>9</td><td>0.26</td><td>120</td><td>212000</td><td>35</td><td>~100</td></tr><tr data-model="AX-3100"><td><strong>AX-3100</strong></td><td>10</td><td>0.30</td><td>100</td><td>240000</td><td>35</td><td>~110</td></tr><tr data-model="AX-3500"><td><strong>AX-3500</strong></td><td>12</td><td>0.40</td><td>90</td><td>310000</td><td>36</td><td>~132</td></tr><tr data-model="AX-4200"><td><strong>AX-4200</strong></td><td>14</td><td>0.50</td><td>70</td><td>381500</td><td>36</td><td>~145</td></tr><tr data-model="AX-5000"><td><strong>AX-5000</strong></td><td>18</td><td>0.80</td><td>70</td><td>438000</td><td>38</td><td>~175</td></tr><tr data-model="AX-5500"><td><strong>AX-5500</strong></td><td>18</td><td>1.00</td><td>60</td><td>460000</td><td>38</td><td>~188</td></tr><tr data-model="AX-6100"><td><strong>AX-6100</strong></td><td>20</td><td>1.20</td><td>58</td><td>501500</td><td>38</td><td>~220</td></tr><tr data-model="AX-7300"><td><strong>AX-7300</strong></td><td>24</td><td>1.50</td><td>50</td><td>570000</td><td>40</td><td>~265</td></tr></tbody>
+            <tfoot><tr><td colspan="7" class=""><br></td></tr></tfoot>
+          </table>
+        </div>
+
+        <!-- Mobile Table -->
+        <div class="spec-wrap reveal in">
+          <h3 class="sub-title">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Mobile Fans</h3>
+          <table class="spec-table" id="specMobile">
+            <thead><tr><th data-key="model" data-type="string">MODEL <span class="sort-ico"><i class="fa-solid fa-sort"></i></span></th><th data-key="diameter" data-type="number" class="">DIAMETER (FT) <span class="sort-ico"><i class="fa-solid fa-sort"></i></span></th><th data-key="power_rate" data-type="number" class="">POWER RATE (KW) <span class="sort-ico"><i class="fa-solid fa-sort"></i></span></th><th data-key="input_power" data-type="number" class="sorted-asc">INPUT POWER <span class="sort-ico"><i class="fa-solid fa-sort-up"></i></span></th><th data-key="speed" data-type="number">SPEED (RPM) <span class="sort-ico"><i class="fa-solid fa-sort"></i></span></th><th data-key="airflow" data-type="number" class="">AIRFLOW (CFM) <span class="sort-ico"><i class="fa-solid fa-sort"></i></span></th><th data-key="weight_lb" data-type="number">WEIGHT (LB) <span class="sort-ico"><i class="fa-solid fa-sort"></i></span></th></tr></thead>
+            <tbody id="specMobile-body"><tr data-model="AXS-100"><td><strong>AXS-100</strong></td><td>0.5</td><td>0.45</td><td>110V/60HZ</td><td>850</td><td>14800</td><td>~50</td></tr><tr data-model="AXG-100"><td><strong>AXG-100</strong></td><td>0.6</td><td>0.45</td><td><span style="background-color: rgba(245, 197, 66, 0.008);">110V/60HZ</span></td><td>850</td><td>14800</td><td>~44</td></tr><tr data-model="AXS-130"><td><strong>AXS-130</strong></td><td>0.8</td><td>0.45</td><td><span style="background-color: rgba(245, 197, 66, 0.008);">110V/60HZ</span></td><td>500</td><td>20600</td><td>~93</td></tr><tr data-model="AXS-150"><td><strong>AXS-150</strong></td><td>0.9</td><td>0.60</td><td><span style="background-color: rgba(245, 197, 66, 0.008);">110V/60HZ</span></td><td>460</td><td>24750</td><td>~130</td></tr><tr data-model="AXS-200"><td><strong>AXS-200</strong></td><td>1.1</td><td>1.10</td><td><span style="background-color: rgba(245, 197, 66, 0.008);">110V/60HZ</span></td><td>400</td><td>33000</td><td>~172</td></tr></tbody>
+            <tfoot><tr><td colspan="7" class=""><br></td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Applications -->
+    <section class="section section--dark" id="application">
+      <div class="container">
+        <div class="section-head reveal in"><span class="eyebrow">Applications</span><h2>Built for Every Industrial Space</h2><p>From heavy manufacturing to public venues, AXTELL fans keep air moving where it matters most.</p></div>
+        <div class="app-grid">
+          <article class="app-card reveal in" data-delay="1"><div class="app-img"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/1.png" alt="Manufacturing Plants" loading="lazy"></div><div class="app-body"><h3>Manufacturing Plants</h3><p>Clear heat and fumes from production lines, improving worker comfort and equipment longevity.</p></div></article>
+          <article class="app-card reveal in" data-delay="2"><div class="app-img"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/2.png" alt="Warehouses &amp; Logistics" loading="lazy"></div><div class="app-body"><h3>Warehouses &amp; Logistics</h3><p>Even out temperature layers in high-bay storage to protect goods and reduce HVAC load.</p></div></article>
+          <article class="app-card reveal in" data-delay="3"><div class="app-img"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/3.png" alt="Sports Halls" loading="lazy"></div><div class="app-body"><h3>Sports Halls</h3><p>Quiet, powerful airflow keeps athletes cool and spectators comfortable during events.</p></div></article>
+          <article class="app-card reveal in" data-delay="1"><div class="app-img"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/4.png" alt="Exhibition Centers" loading="lazy"></div><div class="app-body"><h3>Exhibition Centers</h3><p>Condition vast open spans without ductwork, maintaining comfort across thousands of visitors.</p></div></article>
+          <article class="app-card reveal in" data-delay="2"><div class="app-img"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/5-1.png" alt="Agricultural Facilities" loading="lazy"></div><div class="app-body"><h3>Agricultural Facilities</h3><p>Circulate air through barns and greenhouses to support livestock and crop health.</p></div></article>
+          <article class="app-card reveal in" data-delay="3"><div class="app-img"><img src="https://axtell0.wordpress.com/wp-content/uploads/2026/07/6.png" alt="Shopping Malls" loading="lazy"></div><div class="app-body"><h3>Shopping Malls</h3><p>Deliver a premium ambient experience in atriums and retail concourses, quietly.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section--light" id="contact">
+      <div class="container">
+        <div class="section-head reveal in"><span class="eyebrow">Get in Touch</span><h2>Request a Quote</h2><p>Tell us about your facility and our engineers will recommend the right fan configuration.</p></div>
+        <div class="contact-grid">
+          <div class="contact-info reveal in">
+            <h3>Let's talk about your project</h3>
+            <p>Our team responds within one business day. For urgent enquiries, call us directly during business hours.</p>
+            <ul class="contact-list">
+              <li><div class="ico"><i class="fa-solid fa-location-dot"></i></div><div class="meta"><div class="l">Address</div><div class="v">5211 Co Rd 597, Farmersville, TX 75442</div></div></li>
+              <li><div class="ico"><i class="fa-solid fa-phone"></i></div><div class="meta"><div class="l">Phone</div><div class="v"><a href="tel:+19728075555" target="_blank" rel="noopener noreferrer">(972) 807 5555</a></div></div></li>
+              <li><div class="ico"><i class="fa-solid fa-envelope"></i></div><div class="meta"><div class="l">Email</div><div class="v"><a href="mailto:sale@axtell.us" target="_blank" rel="noopener noreferrer">sale@axtell.us</a></div></div></li>
+            </ul>
+            <div class="social-row" aria-label="Social media">
+              <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+          <form class="contact-form reveal in" id="contactForm" novalidate="">
+            <div class="form-success" id="formSuccess"><i class="fa-solid fa-circle-check"></i><span>Thanks! Your enquiry has been received — we'll reply within one business day.</span></div>
+            <div class="form-row">
+              <div class="field"><label for="name">Full Name <span class="req">*</span></label><input type="text" id="name" name="name" autocomplete="name" required=""><span class="err-msg">Please enter your full name.</span></div>
+              <div class="field"><label for="email">Email <span class="req">*</span></label><input type="email" id="email" name="email" autocomplete="email" required=""><span class="err-msg">Please enter a valid email address.</span></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" autocomplete="tel"><span class="err-msg">Please enter a valid phone number.</span></div>
+              <div class="field"><label for="company">Company</label><input type="text" id="company" name="company" autocomplete="organization"><span class="err-msg"></span></div>
+            </div>
+            <div class="form-row">
+              <div class="field full"><label for="message">Message <span class="req">*</span></label><textarea id="message" name="message" required="" placeholder="Tell us about your facility size, ceiling height, and airflow needs…"></textarea><span class="err-msg">Please tell us a bit about your project.</span></div>
+            </div>
+            <button type="submit" class="btn btn--dark form-submit" id="submitBtn"><span class="btn-label">Send Enquiry <i class="fa-solid fa-paper-plane"></i></span></button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bottom"><p>© <span id="year">2026</span> AXTELL FAN Co., Ltd. All rights reserved.</p><span class="made">Built for <span>industrial performance</span></span></div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // ---------- 工具 ----------
+      const $ = (s, c = document) => c.querySelector(s);
+      const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+
+      // ---------- 滚动头部 ----------
+      const header = $('#header');
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) { requestAnimationFrame(() => { header.classList.toggle('scrolled', window.scrollY > 30);
+            ticking = false; });
+          ticking = true; }
+      }, { passive: true });
+
+      // ---------- 移动菜单 ----------
+      const toggle = $('#navToggle'),
+        menu = $('#navLinks');
+      if (toggle && menu) {
+        const icon = toggle.querySelector('i');
+        toggle.addEventListener('click', () => {
+          const open = menu.classList.toggle('mobile-open');
+          toggle.setAttribute('aria-expanded', String(open));
+          if (icon) icon.className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        });
+        document.addEventListener('click', (e) => {
+          if (window.innerWidth <= 768 && !menu.contains(e.target) && !toggle.contains(e.target)) {
+            menu.classList.remove('mobile-open');
+            toggle.setAttribute('aria-expanded', 'false');
+            if (icon) icon.className = 'fa-solid fa-bars';
+          }
+        });
+        menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+          menu.classList.remove('mobile-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          if (icon) icon.className = 'fa-solid fa-bars';
+        }));
+        const productsNav = $('#productsNav');
+        if (productsNav) {
+          const btn = productsNav.querySelector('button');
+          btn?.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) { e.stopPropagation();
+              productsNav.classList.toggle('open');
+              btn.setAttribute('aria-expanded', String(productsNav.classList.contains('open'))); }
+          });
+        }
+      }
+
+      // ---------- 导航高亮 ----------
+      function updateActive() {
+        const sections = $$('section[id]');
+        let current = 'home';
+        const y = window.scrollY + 100;
+        sections.forEach(s => { if (s.offsetTop <= y) current = s.id; });
+        $$('.nav-links > li > a, .nav-links > li > button').forEach(l => {
+          const target = l.getAttribute('data-target') || '';
+          l.classList.toggle('active', target === current);
+        });
+      }
+      window.addEventListener('scroll', updateActive, { passive: true });
+      updateActive();
+
+      // ---------- 下拉菜单 filter 跳转 ----------
+      $$('[data-filter]').forEach(el => {
+        if (el.classList.contains('tab')) return;
+        el.addEventListener('click', (e) => {
+          const filter = el.dataset.filter;
+          if (filter) {
+            e.preventDefault();
+            const tab = $(`.tab[data-filter="${filter}"]`);
+            if (tab) tab.click();
+            const menu2 = $('#navLinks');
+            if (menu2) menu2.classList.remove('mobile-open');
+            const toggle2 = $('#navToggle');
+            if (toggle2) { toggle2.setAttribute('aria-expanded', 'false');
+              toggle2.querySelector('i').className = 'fa-solid fa-bars'; }
+            $('#products').scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      // ---------- Tab切换产品 ----------
+      const tabs = $$('.tab');
+      const products = $$('.product-card');
+      let currentFilter = 'ceiling';
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          const filter = this.dataset.filter;
+          if (filter === currentFilter) return;
+          tabs.forEach(t => { t.classList.toggle('active', t.dataset.filter === filter);
+            t.setAttribute('aria-selected', t.dataset.filter === filter ? 'true' : 'false'); });
+          products.forEach(p => {
+            const cat = p.dataset.category;
+            p.style.display = (cat === filter || (filter === 'ceiling' && cat === 'ceiling')) ? '' : 'none';
+          });
+          currentFilter = filter;
+        });
+      });
+
+      // ---------- 表格排序 ----------
+      function initSort(tableId) {
+        const table = document.getElementById(tableId);
+        if (!table) return;
+        const thead = table.querySelector('thead');
+        const tbody = table.querySelector('tbody');
+        const foot = table.querySelector('tfoot td');
+        let sortState = { key: null, dir: null };
+
+        function getRows() { return [...tbody.querySelectorAll('tr')]; }
+
+        function sortRows(rows, key, type, dir) {
+          const sorted = rows.slice().sort((a, b) => {
+            const idx = Array.from(thead.querySelectorAll('th')).findIndex(th => th.dataset.key === key);
+            const va = a.cells[idx]?.textContent.trim() || '';
+            const vb = b.cells[idx]?.textContent.trim() || '';
+            let av = va,
+              bv = vb;
+            if (type === 'number') { av = parseFloat(av) || 0;
+              bv = parseFloat(bv) || 0; return dir === 'asc' ? av - bv : bv - av; }
+            return dir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
+          });
+          return sorted;
+        }
+
+        thead.addEventListener('click', (e) => {
+          const th = e.target.closest('th');
+          if (!th) return;
+          const key = th.dataset.key;
+          const type = th.dataset.type;
+          let dir = 'asc';
+          if (sortState.key === key && sortState.dir === 'asc') dir = 'desc';
+          sortState = { key, dir };
+          const rows = getRows();
+          const sorted = sortRows(rows, key, type, dir);
+          tbody.innerHTML = '';
+          sorted.forEach(row => tbody.appendChild(row));
+          thead.querySelectorAll('th').forEach(t => {
+            t.classList.remove('sorted-asc', 'sorted-desc');
+            t.querySelector('.sort-ico').innerHTML = '<i class="fa-solid fa-sort"></i>';
+          });
+          th.classList.add(dir === 'asc' ? 'sorted-asc' : 'sorted-desc');
+          th.querySelector('.sort-ico').innerHTML =
+            `<i class="fa-solid fa-sort-${dir === 'asc' ? 'up' : 'down'}"></i>`;
+          if (foot) { foot.textContent = '点击列头排序 · 点击产品卡片「View specs」可定位到对应行';
+            foot.className = ''; }
+        });
+      }
+
+      initSort('specCeiling');
+      initSort('specMobile');
+
+      // ---------- 高亮联动 ----------
+      function highlightModel(model) {
+        $$('.spec-table tbody tr').forEach(r => r.classList.remove('highlight-row'));
+        $$('.spec-table tfoot td').forEach(f => {
+          if (f.textContent.includes('未找到')) { f.textContent = '点击列头排序 · 点击产品卡片「View specs」可定位到对应行';
+            f.className = ''; }
+        });
+        if (!model) return;
+        let found = false;
+        $$('.spec-table tbody tr').forEach(tr => {
+          if (tr.dataset.model === model) {
+            tr.classList.add('highlight-row');
+            found = true;
+            setTimeout(() => {
+              const rect = tr.getBoundingClientRect();
+              const top = rect.top + window.pageYOffset - 72 - 20;
+              window.scrollTo({ top, behavior: 'smooth' });
+            }, 200);
+          }
+        });
+        if (!found) {
+          $$('.spec-table tfoot td').forEach(f => {
+            if (f.textContent.includes('点击列头排序')) {
+              f.textContent = `⚠️ 未找到型号 "${model}" 的规格数据，请咨询客服获取详细参数。`;
+              f.className = 'notice-highlight';
+            }
+          });
+        }
+      }
+
+      // ---------- 产品卡片点击 ----------
+      document.addEventListener('click', function(e) {
+        const link = e.target.closest('.p-link');
+        if (link && link.getAttribute('href') === '#specs' && link.dataset.model) {
+          e.preventDefault();
+          const model = link.dataset.model;
+          const specsSection = $('#specs');
+          if (specsSection) {
+            specsSection.scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => highlightModel(model), 400);
+          } else { window.location.hash = 'specs'; }
+        }
+      });
+
+      // 处理外部hash
+      const hash = window.location.hash;
+      if (hash.startsWith('#specs')) {
+        const params = new URLSearchParams(hash.replace('#specs', ''));
+        const model = params.get('model');
+        if (model) {
+          setTimeout(() => highlightModel(model), 600);
+        }
+      }
+
+      // ---------- 滚动动画 reveal ----------
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in');
+            revealObserver.unobserve(entry.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      $$('.reveal').forEach(el => revealObserver.observe(el));
+
+      // ---------- 年份 ----------
+      const yearSpan = document.getElementById('year');
+      if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+      // ---------- 表单 ----------
+      const form = document.getElementById('contactForm');
+      if (form) {
+        const submitBtn = document.getElementById('submitBtn');
+        const success = document.getElementById('formSuccess');
+
+        function setInvalid(id, invalid) {
+          const field = document.getElementById(id)?.closest('.field');
+          if (field) field.classList.toggle('invalid', invalid);
+        }
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          success.classList.remove('show');
+          let ok = true;
+          const name = document.getElementById('name').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const phone = document.getElementById('phone').value.trim();
+          const message = document.getElementById('message').value.trim();
+          const nameOk = name.length >= 2;
+          setInvalid('name', !nameOk);
+          ok &&= nameOk;
+          const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+          setInvalid('email', !emailOk);
+          ok &&= emailOk;
+          const phoneOk = !phone || phone.replace(/[\s\-()]/g, '').length >= 7;
+          setInvalid('phone', !phoneOk);
+          ok &&= phoneOk;
+          const msgOk = message.length >= 10;
+          setInvalid('message', !msgOk);
+          ok &&= msgOk;
+          if (!ok) return;
+          submitBtn.disabled = true;
+          submitBtn.querySelector('.btn-label').innerHTML = '<span class="spinner"></span> Sending…';
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.querySelector('.btn-label').innerHTML = 'Send Enquiry <i class="fa-solid fa-paper-plane"></i>';
+            success.classList.add('show');
+            form.reset();
+            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 1400);
+        });
+        form.querySelectorAll('input, textarea').forEach(el => el.addEventListener('input', () => {
+          const field = el.closest('.field');
+          if (field) field.classList.remove('invalid');
+        }));
+      }
+
+    })();
+  </script>
+
+</body></html>
